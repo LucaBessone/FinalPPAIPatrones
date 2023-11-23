@@ -36,6 +36,7 @@
             this.gb2 = new System.Windows.Forms.GroupBox();
             this.lblLlamadasPeriodo = new System.Windows.Forms.Label();
             this.ddlLlamadas = new System.Windows.Forms.ComboBox();
+            this.btnTomarSeleccionLlamada = new System.Windows.Forms.Button();
             this.gb1.SuspendLayout();
             this.gb2.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +96,7 @@
             // 
             // gb2
             // 
+            this.gb2.Controls.Add(this.btnTomarSeleccionLlamada);
             this.gb2.Controls.Add(this.ddlLlamadas);
             this.gb2.Controls.Add(this.lblLlamadasPeriodo);
             this.gb2.Location = new System.Drawing.Point(502, 62);
@@ -124,6 +126,18 @@
             this.ddlLlamadas.TabIndex = 3;
             this.ddlLlamadas.Text = "Llamadas";
             this.ddlLlamadas.SelectedIndexChanged += new System.EventHandler(this.ddlLlamadas_SelectedIndexChanged);
+            // 
+            // btnTomarSeleccionLlamada
+            // 
+            this.btnTomarSeleccionLlamada.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTomarSeleccionLlamada.Location = new System.Drawing.Point(66, 126);
+            this.btnTomarSeleccionLlamada.Name = "btnTomarSeleccionLlamada";
+            this.btnTomarSeleccionLlamada.Size = new System.Drawing.Size(153, 44);
+            this.btnTomarSeleccionLlamada.TabIndex = 9;
+            this.btnTomarSeleccionLlamada.Text = "Elegir llamada";
+            this.btnTomarSeleccionLlamada.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTomarSeleccionLlamada.UseVisualStyleBackColor = true;
+            this.btnTomarSeleccionLlamada.Click += new System.EventHandler(this.btnTomarSeleccionLlamada_Click);
             // 
             // PantallaConsultarEncuesta
             // 
@@ -155,6 +169,7 @@
         private System.Windows.Forms.GroupBox gb2;
         private System.Windows.Forms.ComboBox ddlLlamadas;
         private System.Windows.Forms.Label lblLlamadasPeriodo;
+        private System.Windows.Forms.Button btnTomarSeleccionLlamada;
     }
 }
 

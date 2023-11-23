@@ -43,12 +43,18 @@ namespace FinalPPAIPatrones
         public void mostrarLlamadasDelPeriodo(List<Llamada> llamadasPeriodo)
         {
             gb2.Visible = true;
-            ddlLlamadas.DataSource = llamadasPeriodo.Select(llamada => llamada.cliente.numeroCelular).ToList(); ;
+            ddlLlamadas.DataSource = llamadasPeriodo.Select(llamada => llamada.cliente.numeroCelular).ToList();
         }
 
         private void ddlLlamadas_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTomarSeleccionLlamada_Click(object sender, EventArgs e)
+        {
+            //verificar que haya elegido un item
+            GestorConsultarEncuesta.tomarSeleccionLlamada(ddlLlamadas.SelectedItem);
         }
     }
 }

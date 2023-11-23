@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PPAI_DSI_EntregaFinalPatrones.Entidades;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PPAI_CU44_G1_3K6.Entidades
 {
@@ -13,37 +15,26 @@ namespace PPAI_CU44_G1_3K6.Entidades
         
         List<Encuesta> encuestas = new List<Encuesta> { };
 
-        public (Encuesta, List<Pregunta>, List<List<RespuestaPosible>>) esEncuestaDeCliente(int idEncuesta)
+        public Encuesta esEncuestaDeCliente(int idEncuesta)
         {
-            Encuesta encuestaLlamada = new Encuesta();
-            List<Pregunta> preguntas = new List<Pregunta>();
-            List<List<RespuestaPosible>> respuestas = new List<List<RespuestaPosible>>();
-            foreach(var encuesta in encuestas)
-            {
-                if(encuesta.id == idEncuesta)
-                {
-                    encuestaLlamada = encuesta;
-                    foreach(var pregunta in encuesta.preguntas)
-                    {
-                        preguntas.Add(pregunta);
-                        respuestas.Add(pregunta.listarRespuestasPosibles());
-                    };
-                }
-            }
-            return (encuestaLlamada, preguntas, respuestas);
+            var db = new AppDbContext();
+            var enc = db.Encuesta.Where(x=>x.id == idEncuesta).FirstOrDefault();
+            return enc;
         }
         public string getDescipcion()
         {
             return this.descripcion;
         }
-        public List<string> obtenerDescripcionPregunta(List<Pregunta> preguntas)
+        public List<Pregunta> obtenerDescripcionPregunta()
         {
-            List<string> descripcionPreguntas = new List<string>();
-            foreach(var pregunta in preguntas)
+            List<Pregunta> pregs = new List<Pregunta>();
+            Pregunta preg = new Pregunta();
+            foreach (Pregunta pregunta in this.preguntas)
             {
-                descripcionPreguntas.Add(pregunta.getDescripcion());
+                pregs.Add(preg.getDescripcionYRespuestaPosible(pregunta.id));
             }
-            return descripcionPreguntas;
+
+            return pregs;
         }
 
     }

@@ -41,7 +41,7 @@ namespace PPAI_CU44_G1_3K6.Entidades
             return false;
         }
 
-        public LlamadaSeleccionada getDatosLlamada()
+        public (string,string,string) getDatosLlamada()
         {
             string nombreCompleto = getNombreClienteDeLaLlamada(this.cliente);
             string estadoActual = "";
@@ -55,13 +55,7 @@ namespace PPAI_CU44_G1_3K6.Entidades
                 }
             }
             string duracion = getDuracion();
-            LlamadaSeleccionada llamadaSeleccionada = new LlamadaSeleccionada
-            {
-                nombre = nombreCompleto,
-                estado = estadoActual,
-                duracion = duracion
-            };
-            return llamadaSeleccionada;
+            return (nombreCompleto, estadoActual, duracion);
         }
 
         private string getDuracion()

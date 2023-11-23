@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using PPAI_DSI_EntregaFinalPatrones.Entidades;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PPAI_CU44_G1_3K6.Entidades
 {
@@ -8,19 +10,12 @@ namespace PPAI_CU44_G1_3K6.Entidades
         public string pregunta { get; set; }
         public List<RespuestaPosible> respuesta { get; set; }
 
-        public List<RespuestaPosible> listarRespuestasPosibles()
+        public Pregunta getDescripcionYRespuestaPosible(int id)
         {
-            List<RespuestaPosible> respuestasPregunta = new List<RespuestaPosible>();
-            foreach (var res in this.respuesta)
-            {
-                respuestasPregunta.Add(res);
-            }
-            return respuestasPregunta;
-        }
-        
-        public string getDescripcion() 
-        {
-            return this.pregunta;
+            List<Pregunta> pregs = new List<Pregunta>();
+            var db = new AppDbContext();
+            var preg = db.Pregunta.Where(x => x.id == id).FirstOrDefault();
+            return preg;
         }
     }
 }
