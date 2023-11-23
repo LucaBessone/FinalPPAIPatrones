@@ -60,8 +60,8 @@ namespace PPAI_CU44_G1_3K6.Entidades
 
         private string getDuracion()
         {
-            var tiempo = this.duracion; //TimeSpan.FromMinutes(this.duracion);
-            return tiempo + " minutos";//.ToString();
+            var tiempo = /*this.duracion;*/ TimeSpan.FromMinutes(this.duracion);
+            return tiempo.ToString(); //+ " minutos";//.ToString();
             //return tiempo.ToString("hh:mm:ss");
         }
 
