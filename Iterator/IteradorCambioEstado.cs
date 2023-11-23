@@ -39,7 +39,7 @@ namespace FinalPPAIPatrones.Iterator
 
         public bool haTerminado()
         {
-            if (cambios.Count <= puntero)
+            if (cambios.Count > puntero)
             {
                 return false;
             }

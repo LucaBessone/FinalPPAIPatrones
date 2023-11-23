@@ -17,7 +17,8 @@ namespace FinalPPAIPatrones
         {
             InitializeComponent();
         }
-
+        public List<string> preg { get; set; }
+        public List<string> resp { get; set; }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -38,6 +39,7 @@ namespace FinalPPAIPatrones
             DateTime fechaInicio = monthCalendar1.SelectionRange.Start;
             DateTime fechaFin = monthCalendar1.SelectionRange.End;
             GestorConsultarEncuesta.tomarPeriodo(fechaInicio, fechaFin);
+            gb3.Visible = false;
         }
 
         public void mostrarLlamadasDelPeriodo(List<Llamada> llamadasPeriodo)
@@ -64,6 +66,8 @@ namespace FinalPPAIPatrones
             txtEstadoEncuesta.Text = estadoActual;
             txtDescripcionEncuesta.Text = descripcionEncuesta;
             txtDuracion.Text = duracion;
+            preg = preguntas;
+            resp = respuestas;
 
             DataTable dataTable = new DataTable();
 
@@ -105,6 +109,11 @@ namespace FinalPPAIPatrones
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            GestorConsultarEncuesta.tomarOpcionDeImpresion(txtNombreCliente.Text, txtEstadoEncuesta.Text, txtDuracion.Text, txtDescripcionEncuesta.Text, preg, resp);
         }
     }
 }

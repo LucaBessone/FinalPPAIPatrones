@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblDatosLlamada = new System.Windows.Forms.Label();
             this.GrillaPR = new System.Windows.Forms.DataGridView();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.gb1.SuspendLayout();
             this.gb2.SuspendLayout();
             this.gb3.SuspendLayout();
@@ -154,6 +155,7 @@
             // 
             // gb3
             // 
+            this.gb3.Controls.Add(this.btnImprimir);
             this.gb3.Controls.Add(this.txtDescripcionEncuesta);
             this.gb3.Controls.Add(this.label4);
             this.gb3.Controls.Add(this.txtDuracion);
@@ -266,6 +268,18 @@
             this.GrillaPR.TabIndex = 0;
             this.GrillaPR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Location = new System.Drawing.Point(464, 304);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(153, 44);
+            this.btnImprimir.TabIndex = 19;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // PantallaConsultarEncuesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +291,7 @@
             this.Controls.Add(this.gb1);
             this.Controls.Add(this.btnConsultarEncuesta);
             this.Name = "PantallaConsultarEncuesta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar Encuesta";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gb1.ResumeLayout(false);
@@ -312,6 +327,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombreCliente;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
 

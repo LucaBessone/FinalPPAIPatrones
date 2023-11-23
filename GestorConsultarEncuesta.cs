@@ -2,7 +2,9 @@
 using PPAI_DSI_EntregaFinalPatrones.Entidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -99,6 +101,32 @@ namespace FinalPPAIPatrones
 
             pantalla.mostrarDatosDeLlamada(nombreCompleto,estadoActual,duracion.ToString(),descripcion,preguntasCliente,respuestasCliente);
             pantalla.mostrarOpcionDeImpresion();
+        }
+        public static void tomarOpcionDeImpresion(string nombreCompleto, string estadoActual, string duracion, string descripcionEncuesta, List<string> preguntas, List<string> respuestas)
+        {
+            generarCSV(nombreCompleto, estadoActual, duracion, descripcionEncuesta, preguntas, respuestas);
+        }
+        public static void generarCSV(string nombreCompleto, string estadoActual, string duracion, string descripcionEncuesta, List<string> preguntas, List<string> respuestas)
+        {
+            string csv = nombreCompleto.ToString() + "," + estadoActual.ToString() + "," + duracion.ToString();
+            var contador = 0;
+            foreach (var pregunta in preguntas)
+            {
+                string pregRes = "\n►" + pregunta + "," + respuestas[contador] + "◄";
+                csv = string.Concat(csv, pregRes);
+                contador++;
+            }
+            guardarCSV(csv);
+        }
+        public static void guardarCSV(string csv)
+        {
+            string ruta = @"H:\\PPAI-DSI-EntregaFinalPatrones\\llamada.csv";
+            using (FileStream fileStream = File.Create(ruta))
+            {
+                string contiene = csv;
+                byte[] data = Encoding.UTF8.GetBytes(contiene);
+                fileStream.Write(data, 0, data.Length);
+            }
         }
     }
 }

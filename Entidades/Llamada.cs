@@ -18,17 +18,7 @@ namespace PPAI_CU44_G1_3K6.Entidades
         public List<CambioDeEstado> cambioDeEstado { get; set; }
         public List<RespuestaDeCliente> respuestaDeCliente { get; set; }
 
-        //public bool tieneEncRespondidas(DateTime fechaInicio, DateTime fechaFin)
-        //{
-        //    foreach (var cambioDeEstado in this.cambioDeEstado)
-        //    {
-        //        if(esDePeriodo(cambioDeEstado, fechaInicio, fechaFin))
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+
         public bool tieneEncRespondidas(DateTime fechaInicio, DateTime fechaFin)
         {
             var iterador = crearIterador(cambioDeEstado);
@@ -44,19 +34,6 @@ namespace PPAI_CU44_G1_3K6.Entidades
             }
             return false;
         }
-
-        //public bool esDePeriodo(CambioDeEstado cambioDeEstado, DateTime fechaInicio, DateTime fechaFin)
-        //{
-        //    if (cambioDeEstado.esEstadoInicial())
-        //    {
-        //        var fechaHoraInicioEstado = cambioDeEstado.getFechaHoraInicio();
-        //        if (DateTime.Compare(fechaHoraInicioEstado, fechaInicio) > 0 && DateTime.Compare(fechaHoraInicioEstado, fechaFin) < 0)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
 
         public (string,string,string) getDatosLlamada()
         {
