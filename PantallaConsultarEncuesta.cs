@@ -63,6 +63,7 @@ namespace FinalPPAIPatrones
             txtNombreCliente.Text = nombreCompleto;
             txtEstadoEncuesta.Text = estadoActual;
             txtDescripcionEncuesta.Text = descripcionEncuesta;
+            txtDuracion.Text = duracion;
 
             DataTable dataTable = new DataTable();
 

@@ -22,7 +22,7 @@ namespace PPAI_DSI_EntregaFinalPatrones.Entidades
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=ELAP0041\\SQLEXPRESS; Database=PPAIDSICF; User=sa; Password=Luca1234; TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=PC-LUCA\\SQLEXPRESS; Database=PPAIDSICF; User=sa; Password=Luca1234; TrustServerCertificate=True");
             }
         }
         // DbSet para cada entidad en tu modelo

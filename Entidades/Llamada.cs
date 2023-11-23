@@ -1,10 +1,12 @@
-﻿using PPAI_CU44_G1_3K6.ViewModel;
+﻿using FinalPPAIPatrones.Iterator;
+using PPAI_CU44_G1_3K6.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PPAI_CU44_G1_3K6.Entidades
 {
-    public class Llamada
+    public class Llamada:IAgregado<CambioDeEstado, DateTime>
     {
         public int id { get; set; }
         public int descripcionOperador { get; set; }
@@ -16,30 +18,45 @@ namespace PPAI_CU44_G1_3K6.Entidades
         public List<CambioDeEstado> cambioDeEstado { get; set; }
         public List<RespuestaDeCliente> respuestaDeCliente { get; set; }
 
+        //public bool tieneEncRespondidas(DateTime fechaInicio, DateTime fechaFin)
+        //{
+        //    foreach (var cambioDeEstado in this.cambioDeEstado)
+        //    {
+        //        if(esDePeriodo(cambioDeEstado, fechaInicio, fechaFin))
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
         public bool tieneEncRespondidas(DateTime fechaInicio, DateTime fechaFin)
         {
-            foreach (var cambioDeEstado in this.cambioDeEstado)
+            var iterador = crearIterador(cambioDeEstado);
+            iterador.primero();
+            var fechas = new List<DateTime>() { fechaInicio, fechaFin };
+            while(iterador.haTerminado() == false)
             {
-                if(esDePeriodo(cambioDeEstado, fechaInicio, fechaFin))
+                if (iterador.cumpleFiltro(fechas))
                 {
                     return true;
                 }
+                iterador.siguiente();
             }
             return false;
         }
 
-        public bool esDePeriodo(CambioDeEstado cambioDeEstado, DateTime fechaInicio, DateTime fechaFin)
-        {
-            if (cambioDeEstado.esEstadoInicial())
-            {
-                var fechaHoraInicioEstado = cambioDeEstado.getFechaHoraInicio();
-                if (DateTime.Compare(fechaHoraInicioEstado, fechaInicio) > 0 && DateTime.Compare(fechaHoraInicioEstado, fechaFin) < 0)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        //public bool esDePeriodo(CambioDeEstado cambioDeEstado, DateTime fechaInicio, DateTime fechaFin)
+        //{
+        //    if (cambioDeEstado.esEstadoInicial())
+        //    {
+        //        var fechaHoraInicioEstado = cambioDeEstado.getFechaHoraInicio();
+        //        if (DateTime.Compare(fechaHoraInicioEstado, fechaInicio) > 0 && DateTime.Compare(fechaHoraInicioEstado, fechaFin) < 0)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public (string,string,string) getDatosLlamada()
         {
@@ -60,8 +77,8 @@ namespace PPAI_CU44_G1_3K6.Entidades
 
         private string getDuracion()
         {
-            var tiempo = /*this.duracion;*/ TimeSpan.FromMinutes(this.duracion);
-            return tiempo.ToString(); //+ " minutos";//.ToString();
+            var tiempo = this.duracion;//TimeSpan.FromMinutes(this.duracion);
+            return tiempo + " minutos";//.ToString();
             //return tiempo.ToString("hh:mm:ss");
         }
 
@@ -90,6 +107,12 @@ namespace PPAI_CU44_G1_3K6.Entidades
                 }
             }
             return (preguntaCliente,respuestasCliente);
+        }
+
+        public IIterador<DateTime> crearIterador(List<CambioDeEstado> elements)
+        {
+            var iteradorArticulo = new IteradorCambioEstado(elements);
+            return iteradorArticulo;
         }
     }
 }

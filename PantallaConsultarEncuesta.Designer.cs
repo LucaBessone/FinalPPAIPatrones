@@ -38,16 +38,16 @@
             this.ddlLlamadas = new System.Windows.Forms.ComboBox();
             this.lblLlamadasPeriodo = new System.Windows.Forms.Label();
             this.gb3 = new System.Windows.Forms.GroupBox();
-            this.GrillaPR = new System.Windows.Forms.DataGridView();
-            this.lblDatosLlamada = new System.Windows.Forms.Label();
             this.txtDescripcionEncuesta = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDuracion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEstadoEncuesta = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblDatosLlamada = new System.Windows.Forms.Label();
+            this.GrillaPR = new System.Windows.Forms.DataGridView();
             this.gb1.SuspendLayout();
             this.gb2.SuspendLayout();
             this.gb3.SuspendLayout();
@@ -156,7 +156,7 @@
             // 
             this.gb3.Controls.Add(this.txtDescripcionEncuesta);
             this.gb3.Controls.Add(this.label4);
-            this.gb3.Controls.Add(this.textBox1);
+            this.gb3.Controls.Add(this.txtDuracion);
             this.gb3.Controls.Add(this.label3);
             this.gb3.Controls.Add(this.txtEstadoEncuesta);
             this.gb3.Controls.Add(this.label2);
@@ -170,25 +170,6 @@
             this.gb3.TabIndex = 11;
             this.gb3.TabStop = false;
             this.gb3.Visible = false;
-            // 
-            // GrillaPR
-            // 
-            this.GrillaPR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaPR.Location = new System.Drawing.Point(339, 86);
-            this.GrillaPR.Name = "GrillaPR";
-            this.GrillaPR.Size = new System.Drawing.Size(427, 281);
-            this.GrillaPR.TabIndex = 0;
-            this.GrillaPR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // lblDatosLlamada
-            // 
-            this.lblDatosLlamada.AutoSize = true;
-            this.lblDatosLlamada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatosLlamada.Location = new System.Drawing.Point(21, 33);
-            this.lblDatosLlamada.Name = "lblDatosLlamada";
-            this.lblDatosLlamada.Size = new System.Drawing.Size(322, 24);
-            this.lblDatosLlamada.TabIndex = 2;
-            this.lblDatosLlamada.Text = "Datos de la llamada seleccionada";
             // 
             // txtDescripcionEncuesta
             // 
@@ -209,14 +190,14 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Descripcion Encuesta";
             // 
-            // textBox1
+            // txtDuracion
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(30, 255);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(279, 23);
-            this.textBox1.TabIndex = 16;
+            this.txtDuracion.Enabled = false;
+            this.txtDuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDuracion.Location = new System.Drawing.Point(30, 255);
+            this.txtDuracion.Name = "txtDuracion";
+            this.txtDuracion.Size = new System.Drawing.Size(279, 23);
+            this.txtDuracion.TabIndex = 16;
             // 
             // label3
             // 
@@ -266,6 +247,25 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Nombre cliente";
             // 
+            // lblDatosLlamada
+            // 
+            this.lblDatosLlamada.AutoSize = true;
+            this.lblDatosLlamada.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatosLlamada.Location = new System.Drawing.Point(21, 33);
+            this.lblDatosLlamada.Name = "lblDatosLlamada";
+            this.lblDatosLlamada.Size = new System.Drawing.Size(322, 24);
+            this.lblDatosLlamada.TabIndex = 2;
+            this.lblDatosLlamada.Text = "Datos de la llamada seleccionada";
+            // 
+            // GrillaPR
+            // 
+            this.GrillaPR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GrillaPR.Location = new System.Drawing.Point(339, 86);
+            this.GrillaPR.Name = "GrillaPR";
+            this.GrillaPR.Size = new System.Drawing.Size(427, 192);
+            this.GrillaPR.TabIndex = 0;
+            this.GrillaPR.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
             // PantallaConsultarEncuesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,7 +306,7 @@
         private System.Windows.Forms.DataGridView GrillaPR;
         private System.Windows.Forms.TextBox txtDescripcionEncuesta;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDuracion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtEstadoEncuesta;
         private System.Windows.Forms.Label label2;

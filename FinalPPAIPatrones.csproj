@@ -199,9 +199,13 @@
     <Compile Include="Entidades\Encuesta.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Llamada.cs" />
+    <Compile Include="Entidades\Objetct.cs" />
     <Compile Include="Entidades\Pregunta.cs" />
     <Compile Include="Entidades\RespuestaDeCliente.cs" />
     <Compile Include="Entidades\RespuestaPosible.cs" />
+    <Compile Include="Iterator\IAgregado.cs" />
+    <Compile Include="Iterator\IIterador.cs" />
+    <Compile Include="Iterator\IteradorCambioEstado.cs" />
     <Compile Include="PantallaConsultarEncuesta.cs">
       <SubType>Form</SubType>
     </Compile>
