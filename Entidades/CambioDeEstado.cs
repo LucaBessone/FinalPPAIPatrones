@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using PPAI_DSI_EntregaFinalPatrones.Entidades;
+using System;
+using System.Linq;
 
 namespace PPAI_CU44_G1_3K6.Entidades
 {
