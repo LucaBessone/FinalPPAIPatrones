@@ -53,8 +53,57 @@ namespace FinalPPAIPatrones
 
         private void btnTomarSeleccionLlamada_Click(object sender, EventArgs e)
         {
-            //verificar que haya elegido un item
-           // GestorConsultarEncuesta.tomarSeleccionLlamada(ddlLlamadas.SelectedItem);
+            //devuelve el numero
+            GestorConsultarEncuesta.tomarSeleccionLlamada(long.Parse(ddlLlamadas.SelectedValue.ToString()));
+        }
+
+        public void mostrarDatosDeLlamada(string nombreCompleto, string estadoActual, string duracion, string descripcionEncuesta, List<string> preguntas, List<string> respuestas)
+        {
+            gb3.Visible = true;
+            txtNombreCliente.Text = nombreCompleto;
+            txtEstadoEncuesta.Text = estadoActual;
+            txtDescripcionEncuesta.Text = descripcionEncuesta;
+
+            DataTable dataTable = new DataTable();
+
+            // Agrega las columnas al DataTable
+            dataTable.Columns.Add("Preguntas", typeof(string));
+            dataTable.Columns.Add("Respuestas", typeof(string));
+
+            // Combina las listas y agrega filas al DataTable
+            for (int i = 0; i < Math.Min(preguntas.Count, respuestas.Count); i++)
+            {
+                dataTable.Rows.Add(preguntas[i], respuestas[i]);
+            }
+
+            // Asigna el DataTable al origen de datos del DataGridView
+            GrillaPR.DataSource = dataTable;
+
+            // Configura las columnas para llenar el ancho del control
+            foreach (DataGridViewColumn column in GrillaPR.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+        }
+
+        public void mostrarOpcionDeImpresion()
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

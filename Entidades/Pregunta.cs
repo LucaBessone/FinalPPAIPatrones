@@ -1,4 +1,5 @@
-﻿using PPAI_DSI_EntregaFinalPatrones.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using PPAI_DSI_EntregaFinalPatrones.Entidades;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,9 +13,20 @@ namespace PPAI_CU44_G1_3K6.Entidades
 
         public Pregunta getDescripcionYRespuestaPosible(int id)
         {
-            List<Pregunta> pregs = new List<Pregunta>();
             var db = new AppDbContext();
-            var preg = db.Pregunta.Where(x => x.id == id).FirstOrDefault();
+            var preg = db.Pregunta.Include(p => p.respuesta).Where(x => x.id == id).FirstOrDefault();
+            preg = (from p in db.Pregunta
+                       where p.id == id
+                       select new Pregunta
+                       {
+                           id = p.id,
+                           pregunta = p.pregunta,
+                           respuesta = p.respuesta.Select(rp => new RespuestaPosible
+                           {
+                               id = rp.id,
+                               descripcion = rp.descripcion
+                           }).ToList()
+                       }).First();
             return preg;
         }
     }

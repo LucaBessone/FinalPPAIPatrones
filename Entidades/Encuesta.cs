@@ -17,8 +17,26 @@ namespace PPAI_CU44_G1_3K6.Entidades
 
         public Encuesta esEncuestaDeCliente(int idEncuesta)
         {
-            var db = new AppDbContext();
-            var enc = db.Encuesta.Where(x=>x.id == idEncuesta).FirstOrDefault();
+            //var db = new AppDbContext();
+            //var enc = db.Encuesta.Where(x=>x.id == idEncuesta).FirstOrDefault();
+            Encuesta enc;
+            using (var db = new AppDbContext())
+            {
+                enc = (from e in db.Encuesta
+                            where e.id == idEncuesta
+                            select new Encuesta
+                            {
+                                id = e.id,
+                                descripcion = e.descripcion,
+                                fechaFinVigencia = e.fechaFinVigencia,
+                                preguntas = e.preguntas.Select(ce => new Pregunta
+                                {
+                                    id = ce.id,
+                                    pregunta = ce.pregunta,
+                                    respuesta = ce.respuesta,
+                                }).ToList(),
+                            }).FirstOrDefault();
+            }
             return enc;
         }
         public string getDescipcion()

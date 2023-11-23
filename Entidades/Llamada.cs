@@ -60,8 +60,8 @@ namespace PPAI_CU44_G1_3K6.Entidades
 
         private string getDuracion()
         {
-            var tiempo = TimeSpan.FromMinutes(this.duracion);
-            return tiempo.ToString();
+            var tiempo = this.duracion; //TimeSpan.FromMinutes(this.duracion);
+            return tiempo + " minutos";//.ToString();
             //return tiempo.ToString("hh:mm:ss");
         }
 
@@ -70,24 +70,26 @@ namespace PPAI_CU44_G1_3K6.Entidades
             return clienteLlamada.getNombre();
         }
         
-        public List<string> obtenerRespuestas(List<List<RespuestaPosible>> lista)
+        public (List<string>, List<string>) obtenerRespuestas(List<Pregunta> lista)
         {
+            var preguntaCliente = new List<string>();
             var respuestasCliente = new List<string>();
-            foreach (var respuestasPosible in lista)
+
+            foreach (var preg in lista)
             {
-                foreach (var respuesta in respuestasPosible)
+                foreach (var respuesta in preg.respuesta)
                 {
                     foreach(var respuestaCliente in this.respuestaDeCliente)
                     {
-                        if (respuestaCliente.getDescripcionRespuesta().Equals(respuesta.descripcion))
+                        if (respuesta.id == respuestaCliente.respuestaPosible.id)
                         {
-                            respuestasCliente.Add(respuesta.descripcion);
+                            preguntaCliente.Add(preg.pregunta);
+                            respuestasCliente.Add(respuesta.getDescripcionRespuesta());
                         }
-
                     }
                 }
             }
-            return respuestasCliente;
+            return (preguntaCliente,respuestasCliente);
         }
     }
 }
