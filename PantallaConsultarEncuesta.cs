@@ -54,7 +54,7 @@ namespace FinalPPAIPatrones
         private void btnTomarSeleccionLlamada_Click(object sender, EventArgs e)
         {
             //verificar que haya elegido un item
-            GestorConsultarEncuesta.tomarSeleccionLlamada(ddlLlamadas.SelectedItem);
+           // GestorConsultarEncuesta.tomarSeleccionLlamada(ddlLlamadas.SelectedItem);
         }
     }
 }

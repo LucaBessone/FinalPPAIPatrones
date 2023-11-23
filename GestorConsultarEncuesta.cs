@@ -75,37 +75,37 @@ namespace FinalPPAIPatrones
             return llamadasPeriodo;
         }
 
-        public static Llamada tomarSeleccionLlamada(int seleccionadoLlamada)
+        public static /*Llamada*/void tomarSeleccionLlamada(int seleccionadoLlamada)
         {
-            Llamada seleccion = llamadasPeriodo.Where(x => x.cliente.numeroCelular == seleccionadoLlamada).FirstOrDefault();
-            return obtenerDatosLlamada(seleccion);
+            //Llamada seleccion = llamadasPeriodo.Where(x => x.cliente.numeroCelular == seleccionadoLlamada).FirstOrDefault();
+            //return obtenerDatosLlamada(seleccion);
         }
 
-        public static Llamada obtenerDatosLlamada(Llamada seleccion)
+        public static /*Llamada*/void obtenerDatosLlamada(Llamada seleccion)
         {
-            var (nombreCompleto, estadoActual, duracion) = seleccion.getDatosLlamada();
+            //var (nombreCompleto, estadoActual, duracion) = seleccion.getDatosLlamada();
 
-            Encuesta enc = new Encuesta();
-            var encuesta = enc.esEncuestaDeCliente(seleccion.encuestaEnviada.id);
-            var descripcion = encuesta.getDescipcion();
+            //Encuesta enc = new Encuesta();
+            //var encuesta = enc.esEncuestaDeCliente(seleccion.encuestaEnviada.id);
+            //var descripcion = encuesta.getDescipcion();
 
-            var preguntasRespuestas = encuesta.obtenerDescripcionPregunta();
-            List<string> respuestasCliente = new List<string>();
-            respuestasCliente = seleccion.obtenerRespuestas(preguntasRespuestas);
-            var contador = 0;
-            List<PreguntaRespuesta> preguntaRespuesta = new List<PreguntaRespuesta>();
-            foreach (string descripcion in descripcionPreguntas)
-            {
-                PreguntaRespuesta pregRes = new PreguntaRespuesta
-                {
-                    pregunta = descripcion,
-                    respuesta = respuestasCliente.ElementAt(contador)
-                };
-                preguntaRespuesta.Add(pregRes);
-                contador++;
-            }
-            llamadaSeleccionada.preguntaRespuestas = preguntaRespuesta;
-            return llamadaSeleccionada;
+            //var preguntasRespuestas = encuesta.obtenerDescripcionPregunta();
+            //List<string> respuestasCliente = new List<string>();
+            //respuestasCliente = seleccion.obtenerRespuestas(preguntasRespuestas);
+            //var contador = 0;
+            //List<PreguntaRespuesta> preguntaRespuesta = new List<PreguntaRespuesta>();
+            //foreach (string descripcion in descripcionPreguntas)
+            //{
+            //    PreguntaRespuesta pregRes = new PreguntaRespuesta
+            //    {
+            //        pregunta = descripcion,
+            //        respuesta = respuestasCliente.ElementAt(contador)
+            //    };
+            //    preguntaRespuesta.Add(pregRes);
+            //    contador++;
+            //}
+            //llamadaSeleccionada.preguntaRespuestas = preguntaRespuesta;
+            //return llamadaSeleccionada;
         }
     }
 }
